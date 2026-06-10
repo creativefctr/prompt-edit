@@ -157,7 +157,7 @@ export function FeaturesBlock() {
                   <div className="flex justify-center pt-2 sm:pt-4">
                       <Button
                           asChild
-                          variant="default"
+                          variant="outline"
                           size="sm"
                           className="group"
                       >

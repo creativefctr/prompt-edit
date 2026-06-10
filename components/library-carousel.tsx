@@ -5,6 +5,7 @@ import { MotionCarousel } from '@/components/animate-ui/components/community/mot
 import { EmblaOptionsType } from 'embla-carousel';
 import { Palette, Volume2, Type, Layers, Film, Music, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import MagicRings from './MagicRings';
 
 interface SlideItem {
   id: number;
@@ -211,8 +212,35 @@ function LibraryCarousel() {
   };
 
   return (
-    <section className="py-24 bg-[#030303] border-y border-zinc-900 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6 mb-8 text-center space-y-4">
+    <section className="py-24 bg-[#030303] border-y border-zinc-900 overflow-hidden relative">
+      {/* Background Magic Rings */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none select-none z-0">
+        <MagicRings
+          color="#a855f7" // Vibrant Violet (matching title gradient)
+          colorTwo="#f43f5e" // Vibrant Rose (matching title gradient)
+          ringCount={6}
+          speed={0.8}
+          attenuation={10}
+          lineThickness={2.2}
+          baseRadius={0.35}
+          radiusStep={0.1}
+          scaleRate={0.1}
+          opacity={0.55} // increased opacity to make it more vibrant/less dull
+          blur={0}
+          noiseAmount={0.08}
+          rotation={0}
+          ringGap={1.5}
+          fadeIn={0.7}
+          fadeOut={0.5}
+          followMouse={false}
+          mouseInfluence={0.2}
+          hoverScale={1.2}
+          parallax={0.05}
+          clickBurst={false}
+        />
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 mb-8 text-center space-y-4 relative z-10">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-[11px] font-semibold text-zinc-400 tracking-wide uppercase">
           <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse" />
           Content Creator Templates
@@ -223,23 +251,23 @@ function LibraryCarousel() {
         <p className="text-zinc-400 text-sm md:text-base mx-auto font-medium">
           Get unlimited, instant access to Hollywood-grade templates, sounds, overlays, and color LUTs with your PromptEdit subscription.
         </p>
-          <p className="text-[12px] text-zinc-500 font-medium">
-              ⚡ Available exclusively as part of the <span className="text-zinc-300 font-semibold">PromptEdit Creator Subscription</span> ($39/mo, cancel anytime).
+        <p className="text-[12px] text-zinc-500 font-medium">
+          ⚡ Available exclusively as part of the <span className="text-zinc-300 font-semibold">PromptEdit Creator Subscription</span> ($39/mo, cancel anytime).
         </p>
       </div>
 
-        {/* Centered Explore Templates CTA */}
-        <div className="text-center flex flex-col items-center gap-4 px-6 mb-16">
-            <Button asChild size="lg" className="group">
-                <a href="#pricing">
-                    <span>Explore All 100,000+ Templates</span>
-                    <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-                </a>
-            </Button>
-        </div>
+      {/* Centered Explore Templates CTA */}
+      <div className="text-center flex flex-col items-center gap-4 px-6 mb-16 relative z-10">
+        <Button asChild size="lg" className="group">
+          <a href="#pricing">
+            <span>Explore All 100,000+ Templates</span>
+            <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
+        </Button>
+      </div>
 
       {/* Slightly wider than Features (max-w-7xl) and center aligned */}
-      <div className="max-w-7xl mx-auto px-0 sm:px-6">
+      <div className="max-w-7xl mx-auto px-0 sm:px-6 relative z-10">
         <MotionCarousel
           slides={TEMPLATE_PACKS}
           options={OPTIONS}
