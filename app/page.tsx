@@ -5,6 +5,7 @@ import { Library } from "@/components/library";
 import { SocialProof } from "@/components/social-proof";
 import { Pricing } from "@/components/pricing";
 import { Faq } from "@/components/faq";
+import { TestimonialsSection } from "@/components/testimonials-section";
 
 export default function Home() {
   return (
@@ -32,8 +33,7 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <Models />
-        <Library />
-        <SocialProof />
+        <TestimonialsSection />
         <Pricing />
         <Faq />
       </main>
@@ -42,7 +42,7 @@ export default function Home() {
       <footer className="border-t border-border bg-muted/30">
         <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Aether AI Inc. All rights reserved.
+            &copy; {new Date().getFullYear()} PromptEdit Inc. All rights reserved.
           </div>
           <div className="flex gap-6 text-xs text-muted-foreground">
             <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>

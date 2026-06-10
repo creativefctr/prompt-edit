@@ -138,6 +138,7 @@ Backgrounds
 Guarantee
 how credits work
 Credit Pack
+Creator Membership
 [social proof]
 
 [faq]

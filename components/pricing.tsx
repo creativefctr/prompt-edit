@@ -1,101 +1,135 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-
-const tiers = [
-  {
-    name: "Developer",
-    price: "$0",
-    description: "Perfect for testing and prototyping.",
-    features: [
-      "1,000 free requests per month",
-      "Shared CPU inference",
-      "Community support",
-      "Access to base models only"
-    ],
-    cta: "Start Free",
-    popular: false
-  },
-  {
-    name: "Pro",
-    price: "$49",
-    description: "For production applications and small teams.",
-    features: [
-      "100,000 requests per month",
-      "Dedicated GPU scaling",
-      "Priority email support",
-      "Access to fine-tuned models"
-    ],
-    cta: "Upgrade to Pro",
-    popular: true
-  },
-  {
-    name: "Enterprise",
-    price: "Custom",
-    description: "For organizations requiring custom scale.",
-    features: [
-      "Unlimited volume",
-      "Private multi-region hosting",
-      "Dedicated SLA support",
-      "Custom weights & fine-tuning"
-    ],
-    cta: "Contact Sales",
-    popular: false
-  }
-];
+import { Check, Sparkles, Command } from "lucide-react";
 
 export function Pricing() {
   return (
-    <section className="py-16 px-6 max-w-5xl mx-auto border-b border-border">
-      <div className="space-y-8">
-        <div className="text-center space-y-2">
-          <h2 className="text-3xl font-bold tracking-tight">Simple Pricing</h2>
-          <p className="text-muted-foreground">Choose the plan that fits your integration needs.</p>
+    <section className="py-24 px-6 max-w-5xl mx-auto border-b border-border">
+      <div className="space-y-16">
+        
+        {/* Section Header */}
+        <div className="text-center space-y-3">
+          <p className="text-sm font-semibold text-muted-foreground tracking-wider uppercase">
+            Existing Student Discount
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+            Prompt Edit Pricing
+          </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 pt-4">
-          {tiers.map((tier, idx) => (
-            <div
-              key={idx}
-              className={`p-6 rounded-lg border flex flex-col justify-between ${
-                tier.popular
-                  ? "border-primary ring-1 ring-primary/20 bg-background"
-                  : "border-border bg-card text-card-foreground"
-              }`}
-            >
-              <div className="space-y-4">
-                <div>
-                  <div className="flex justify-between items-center">
-                    <h3 className="font-semibold text-lg">{tier.name}</h3>
-                    {tier.popular && (
-                      <span className="text-xs bg-primary text-primary-foreground px-2.5 py-0.5 rounded-full font-medium">
-                        Popular
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-sm text-muted-foreground mt-1">{tier.description}</p>
-                </div>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-3xl font-bold">{tier.price}</span>
-                  {tier.price !== "Custom" && <span className="text-sm text-muted-foreground">/mo</span>}
-                </div>
-                <ul className="space-y-2 text-sm text-muted-foreground pt-4 border-t border-border">
-                  {tier.features.map((feature, fIdx) => (
-                    <li key={fIdx} className="flex items-center gap-2">
-                      <span className="text-primary font-bold">✓</span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="pt-6">
-                <Button className="w-full" variant={tier.popular ? "default" : "outline"}>
-                  {tier.cta}
-                </Button>
-              </div>
+        {/* Pricing Layout - Grid */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch">
+          
+          {/* Package 1: Credit Pack */}
+          <div className="rounded-[2rem] border border-border bg-muted/30 p-8 flex flex-col h-full">
+            <div className="size-12 rounded-xl bg-background border flex items-center justify-center mb-6 shadow-sm">
+              <Sparkles className="size-6 text-foreground" strokeWidth={1.5} />
             </div>
-          ))}
+            <h3 className="text-2xl font-bold text-foreground">Credit Pack</h3>
+            <p className="text-muted-foreground mt-2">Save on Credits</p>
+            
+            <div className="mt-6 flex items-baseline gap-1">
+              <span className="text-5xl font-extrabold text-foreground tracking-tight">$98</span><br />
+              <span className="text-muted-foreground font-medium">One-time payment</span>
+            </div>
+            
+            <Button variant="outline" className="w-full mt-8 rounded-full h-12 font-medium bg-background hover:bg-muted text-base">
+              Buy Credit Pack
+            </Button>
+            
+            <div className="w-full h-px bg-border my-8" />
+            
+            <ul className="space-y-4">
+              <li className="flex gap-3 text-foreground font-medium">
+                <Check className="size-5 shrink-0 text-foreground" strokeWidth={2} /> 
+                Get $110 Worth of AI Credits Today
+              </li>
+              <li className="flex gap-3 text-foreground font-medium">
+                <Check className="size-5 shrink-0 text-foreground" strokeWidth={2} /> 
+                Save 10% when you claim offer
+              </li>
+              <li className="flex gap-3 text-foreground font-medium">
+                <Check className="size-5 shrink-0 text-foreground" strokeWidth={2} /> 
+                Use your credits on any AI tool
+              </li>
+              <li className="flex gap-3 text-foreground font-medium">
+                <Check className="size-5 shrink-0 text-foreground" strokeWidth={2} /> 
+                Includes Nano Banana Pro, Grok & more
+              </li>
+              <li className="flex gap-3 text-foreground font-medium">
+                <Check className="size-5 shrink-0 text-foreground" strokeWidth={2} /> 
+                No subscriptions required
+              </li>
+            </ul>
+          </div>
+
+          {/* Package 2: Creator Membership */}
+          <div className="rounded-[2rem] border border-border bg-background shadow-xl flex flex-col h-full overflow-hidden">
+            <div className="p-8 pb-0 flex-1">
+              <div className="flex justify-between items-start mb-6">
+                <div className="size-12 rounded-xl bg-muted border flex items-center justify-center shadow-sm">
+                  <Command className="size-6 text-foreground" strokeWidth={1.5} />
+                </div>
+                <span className="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full tracking-wide">
+                  Trending
+                </span>
+              </div>
+              
+              <h3 className="text-2xl font-bold text-foreground">Creator Membership</h3>
+              <p className="text-muted-foreground mt-2">Save on Everything</p>
+              
+              <div className="mt-6 flex items-baseline gap-1">
+                <span className="text-5xl font-extrabold text-foreground tracking-tight">$39</span>
+                <span className="text-muted-foreground font-medium">/ month</span>
+              </div>
+              
+              <Button className="w-full mt-8 rounded-full h-12 font-medium text-base bg-foreground text-background hover:bg-foreground/90">
+                Subscribe to Creator Membership
+              </Button>
+              
+              <div className="w-full h-px bg-border my-8" />
+              
+              <ul className="space-y-4 mb-8">
+                <li className="flex gap-3 text-foreground font-medium">
+                  <Check className="size-5 shrink-0 text-foreground" strokeWidth={2} /> 
+                  $49 Worth of AI Credits every month
+                </li>
+                <li className="flex gap-3 text-foreground font-medium">
+                  <Check className="size-5 shrink-0 text-foreground" strokeWidth={2} /> 
+                  10% off anytime you purchase more
+                </li>
+                <li className="flex gap-3 text-foreground font-medium">
+                  <Check className="size-5 shrink-0 text-foreground" strokeWidth={2} /> 
+                  Lifetime 20% boost on monthly credits
+                </li>
+                <li className="flex gap-3 text-muted-foreground italic text-sm mt-4">
+                  *easily cancel at any time
+                </li>
+              </ul>
+            </div>
+            
+            <div className="bg-muted/40 p-8 border-t border-border">
+              <ul className="space-y-4">
+                <li className="flex gap-3 font-medium text-foreground items-center">
+                  <div className="size-1.5 rounded-full bg-foreground shrink-0" /> 
+                  Access our Content Creator Templates
+                </li>
+                <li className="flex gap-3 font-medium text-foreground items-center">
+                  <div className="size-1.5 rounded-full bg-foreground shrink-0" /> 
+                  Faster generation speeds
+                </li>
+                <li className="flex gap-3 font-medium text-foreground items-center">
+                  <div className="size-1.5 rounded-full bg-foreground shrink-0" /> 
+                  Run multiple generations at once
+                </li>
+              </ul>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
   );
 }
+
+
