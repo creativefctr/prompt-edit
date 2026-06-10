@@ -1,6 +1,7 @@
 import React from "react";
 import { Hero } from "@/components/hero";
 import { FeaturesBlock } from "@/components/features";
+import LibraryCarousel from "@/components/library-carousel";
 import { Pricing } from "@/components/pricing";
 import { Faq } from "@/components/faq";
 import { TestimonialsSection } from "@/components/testimonials-section";
@@ -32,6 +33,7 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <FeaturesBlock />
+        <LibraryCarousel />
         <TestimonialsSection />
         <Pricing />
         <Faq />

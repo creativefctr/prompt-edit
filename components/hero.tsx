@@ -92,7 +92,7 @@ const templatePacks: TemplatePack[] = [
 
 function ModelCard({ model }: { model: AIModel }) {
   return (
-    <div className="group/item flex items-center justify-between py-3 px-4 rounded-xl border border-border bg-background/50 hover:bg-muted/20 hover:border-primary/30 transition-all duration-300 relative">
+    <div className="group/item flex items-center justify-between py-3 px-4 rounded-xl border border-border bg-background/50 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300 relative">
       <div className="flex items-center gap-3">
         <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xs select-none shadow-sm ${model.iconBg} ${model.iconColor} transition-transform duration-300 group-hover/item:scale-105 overflow-hidden ${model.logo ? "p-2" : ""}`}>
           {model.logo ? (
@@ -140,7 +140,7 @@ function ModelCard({ model }: { model: AIModel }) {
 
 function MoreCard({ count, label, suffix }: { count: number; label: string; suffix: string }) {
   return (
-    <div className="flex flex-col items-center justify-center py-3 px-4 rounded-xl border border-dashed border-border/80 bg-background/20 hover:bg-muted/10 hover:border-primary/40 transition-all duration-300 cursor-pointer group/more">
+    <div className="flex flex-col items-center justify-center py-3 px-4 rounded-xl border border-dashed border-border/80 bg-background/20 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300 cursor-pointer group/more">
       <div className="text-center">
         <p className="text-sm font-semibold text-muted-foreground group-hover/more:text-primary transition-colors">
           + {count} More{suffix}
@@ -164,7 +164,7 @@ function ModelGrid({ models, moreCount, moreLabel }: { models: AIModel[]; moreCo
 
 function TemplatePackCard({ pack }: { pack: TemplatePack }) {
   return (
-    <div className="group/temp-item flex flex-col justify-between p-4 rounded-xl border border-border bg-gradient-to-b from-background to-background/40 hover:border-primary/30 transition-all duration-300 shadow-sm relative overflow-hidden">
+    <div className="group/temp-item flex flex-col justify-between p-4 rounded-xl border border-border bg-gradient-to-b from-background to-background/40 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300 shadow-sm relative overflow-hidden">
       {/* Card Header Row */}
       <div className="flex items-center justify-between mb-2.5">
         <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${pack.iconBg} ${pack.iconColor}`}>
