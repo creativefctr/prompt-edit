@@ -10,6 +10,7 @@ import {
   TabsContent,
 } from "@/components/animate-ui/components/radix/tabs";
 import { Sparkles, Video, Image as ImageIcon, FileText, Music, ArrowRight, Layers } from "lucide-react";
+import SoftAurora from "@/components/SoftAurora";
 
 interface AIModel {
   name: string;
@@ -19,6 +20,10 @@ interface AIModel {
   iconColor: string;
   avatarText: string;
   speed: string;
+  logo?: {
+    src: string;
+    isColor: boolean;
+  };
 }
 
 interface TemplatePack {
@@ -32,28 +37,28 @@ interface TemplatePack {
 
 // --- Data Lists ---
 const videoModels: AIModel[] = [
-  { name: "Sora", provider: "OpenAI", price: "$0.50 / gen", iconBg: "bg-red-500/10 dark:bg-red-500/20", iconColor: "text-red-600 dark:text-red-400", avatarText: "SR", speed: "High Quality" },
-  { name: "Runway Gen-3", provider: "Runway", price: "$0.20 / gen", iconBg: "bg-orange-500/10 dark:bg-orange-500/20", iconColor: "text-orange-600 dark:text-orange-400", avatarText: "RW", speed: "Cinematic" },
-  { name: "Luma Dream Machine", provider: "Luma AI", price: "$0.15 / gen", iconBg: "bg-amber-500/10 dark:bg-amber-500/20", iconColor: "text-amber-600 dark:text-amber-400", avatarText: "LM", speed: "Fast" },
+  { name: "Sora", provider: "OpenAI", price: "$0.50 / gen", iconBg: "bg-red-500/10 dark:bg-red-500/20", iconColor: "text-red-600 dark:text-red-400", avatarText: "SR", speed: "High Quality", logo: { src: "/logos/sora-color.svg", isColor: true } },
+  { name: "Runway Gen-3", provider: "Runway", price: "$0.20 / gen", iconBg: "bg-orange-500/10 dark:bg-orange-500/20", iconColor: "text-orange-600 dark:text-orange-400", avatarText: "RW", speed: "Cinematic", logo: { src: "/logos/runway.svg", isColor: false } },
+  { name: "Luma Dream Machine", provider: "Luma AI", price: "$0.15 / gen", iconBg: "bg-amber-500/10 dark:bg-amber-500/20", iconColor: "text-amber-600 dark:text-amber-400", avatarText: "LM", speed: "Fast", logo: { src: "/logos/luma-color.svg", isColor: true } },
 ];
 
 const imageModels: AIModel[] = [
-  { name: "Midjourney v6", provider: "Midjourney", price: "$0.03 / img", iconBg: "bg-blue-500/10 dark:bg-blue-500/20", iconColor: "text-blue-600 dark:text-blue-400", avatarText: "MJ", speed: "Photoreal" },
-  { name: "DALL-E 3", provider: "OpenAI", price: "$0.04 / img", iconBg: "bg-cyan-500/10 dark:bg-cyan-500/20", iconColor: "text-cyan-600 dark:text-cyan-400", avatarText: "DE", speed: "Creative" },
+  { name: "Midjourney v6", provider: "Midjourney", price: "$0.03 / img", iconBg: "bg-blue-500/10 dark:bg-blue-500/20", iconColor: "text-blue-600 dark:text-blue-400", avatarText: "MJ", speed: "Photoreal", logo: { src: "/logos/midjourney.svg", isColor: false } },
+  { name: "DALL-E 3", provider: "OpenAI", price: "$0.04 / img", iconBg: "bg-cyan-500/10 dark:bg-cyan-500/20", iconColor: "text-cyan-600 dark:text-cyan-400", avatarText: "DE", speed: "Creative", logo: { src: "/logos/dalle-color.svg", isColor: true } },
   { name: "Stable Diffusion 3.5", provider: "Stability AI", price: "$0.01 / img", iconBg: "bg-teal-500/10 dark:bg-teal-500/20", iconColor: "text-teal-600 dark:text-teal-400", avatarText: "SD", speed: "Ultra Fast" },
-  { name: "Flux.1 Pro", provider: "Black Forest", price: "$0.02 / img", iconBg: "bg-emerald-500/10 dark:bg-emerald-500/20", iconColor: "text-emerald-600 dark:text-emerald-400", avatarText: "FX", category: "image", speed: "Pro Details" } as unknown as AIModel, // Flux had category inside it in previous file
+  { name: "Flux.1 Pro", provider: "Black Forest", price: "$0.02 / img", iconBg: "bg-emerald-500/10 dark:bg-emerald-500/20", iconColor: "text-emerald-600 dark:text-emerald-400", avatarText: "FX", speed: "Pro Details", logo: { src: "/logos/flux.svg", isColor: false } },
 ];
 
 const textModels: AIModel[] = [
-  { name: "GPT-4o", provider: "OpenAI", price: "$5.00 / M tokens", iconBg: "bg-purple-500/10 dark:bg-purple-500/20", iconColor: "text-purple-600 dark:text-purple-400", avatarText: "GP", speed: "Smartest" },
-  { name: "Claude 3.5 Sonnet", provider: "Anthropic", price: "$3.00 / M tokens", iconBg: "bg-pink-500/10 dark:bg-pink-500/20", iconColor: "text-pink-600 dark:text-pink-400", avatarText: "CL", speed: "Coding/Reason" },
-  { name: "Gemini 1.5 Pro", provider: "Google", price: "$1.25 / M tokens", iconBg: "bg-indigo-500/10 dark:bg-indigo-500/20", iconColor: "text-indigo-600 dark:text-indigo-400", avatarText: "GE", speed: "Large Context" },
+  { name: "GPT-4o", provider: "OpenAI", price: "$5.00 / M tokens", iconBg: "bg-purple-500/10 dark:bg-purple-500/20", iconColor: "text-purple-600 dark:text-purple-400", avatarText: "GP", speed: "Smartest", logo: { src: "/logos/gpt.svg", isColor: false } },
+  { name: "Claude 3.5 Sonnet", provider: "Anthropic", price: "$3.00 / M tokens", iconBg: "bg-pink-500/10 dark:bg-pink-500/20", iconColor: "text-pink-600 dark:text-pink-400", avatarText: "CL", speed: "Coding/Reason", logo: { src: "/logos/claude-color.svg", isColor: true } },
+  { name: "Gemini 1.5 Pro", provider: "Google", price: "$1.25 / M tokens", iconBg: "bg-indigo-500/10 dark:bg-indigo-500/20", iconColor: "text-indigo-600 dark:text-indigo-400", avatarText: "GE", speed: "Large Context", logo: { src: "/logos/gemini-color.svg", isColor: true } },
 ];
 
 const audioModels: AIModel[] = [
-  { name: "Suno v4", provider: "Suno AI", price: "$0.05 / gen", iconBg: "bg-fuchsia-500/10 dark:bg-fuchsia-500/20", iconColor: "text-fuchsia-600 dark:text-fuchsia-400", avatarText: "SU", speed: "Vocal/Music" },
-  { name: "Udio v1.5", provider: "Udio AI", price: "$0.04 / gen", iconBg: "bg-rose-500/10 dark:bg-rose-500/20", iconColor: "text-rose-600 dark:text-rose-400", avatarText: "UD", speed: "Stereo" },
-  { name: "ElevenLabs Reader", provider: "ElevenLabs", price: "$0.015 / 1k chars", iconBg: "bg-sky-500/10 dark:bg-sky-500/20", iconColor: "text-sky-600 dark:text-sky-400", avatarText: "EL", speed: "Ultra Real" },
+  { name: "Suno v4", provider: "Suno AI", price: "$0.05 / gen", iconBg: "bg-fuchsia-500/10 dark:bg-fuchsia-500/20", iconColor: "text-fuchsia-600 dark:text-fuchsia-400", avatarText: "SU", speed: "Vocal/Music", logo: { src: "/logos/suno.svg", isColor: false } },
+  { name: "Udio v1.5", provider: "Udio AI", price: "$0.04 / gen", iconBg: "bg-rose-500/10 dark:bg-rose-500/20", iconColor: "text-rose-600 dark:text-rose-400", avatarText: "UD", speed: "Stereo", logo: { src: "/logos/udio-color.svg", isColor: true } },
+  { name: "ElevenLabs Reader", provider: "ElevenLabs", price: "$0.015 / 1k chars", iconBg: "bg-sky-500/10 dark:bg-sky-500/20", iconColor: "text-sky-600 dark:text-sky-400", avatarText: "EL", speed: "Ultra Real", logo: { src: "/logos/elevenlabs.svg", isColor: false } },
 ];
 
 const templatePacks: TemplatePack[] = [
@@ -89,8 +94,32 @@ function ModelCard({ model }: { model: AIModel }) {
   return (
     <div className="group/item flex items-center justify-between py-3 px-4 rounded-xl border border-border bg-background/50 hover:bg-muted/20 hover:border-primary/30 transition-all duration-300 relative">
       <div className="flex items-center gap-3">
-        <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xs select-none shadow-sm ${model.iconBg} ${model.iconColor} transition-transform duration-300 group-hover/item:scale-105`}>
-          {model.avatarText}
+        <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xs select-none shadow-sm ${model.iconBg} ${model.iconColor} transition-transform duration-300 group-hover/item:scale-105 overflow-hidden ${model.logo ? "p-2" : ""}`}>
+          {model.logo ? (
+            model.logo.isColor ? (
+              <img
+                src={model.logo.src}
+                alt={model.name}
+                className="w-full h-full object-contain filter drop-shadow-sm select-none pointer-events-none"
+              />
+            ) : (
+              <span
+                className="w-full h-full block bg-current select-none pointer-events-none"
+                style={{
+                  maskImage: `url(${model.logo.src})`,
+                  WebkitMaskImage: `url(${model.logo.src})`,
+                  maskSize: "contain",
+                  WebkitMaskSize: "contain",
+                  maskRepeat: "no-repeat",
+                  WebkitMaskRepeat: "no-repeat",
+                  maskPosition: "center",
+                  WebkitMaskPosition: "center",
+                }}
+              />
+            )
+          ) : (
+            model.avatarText
+          )}
         </div>
         <div>
           <h4 className="font-semibold text-sm text-foreground transition-colors group-hover/item:text-primary">
@@ -164,9 +193,25 @@ function TemplatePackCard({ pack }: { pack: TemplatePack }) {
 export function Hero() {
   return (
     <section className="relative overflow-hidden py-16 lg:py-24 px-6 border-b border-border bg-background">
-      {/* Subtle Background Glows */}
-      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full bg-primary/10 blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-96 h-96 rounded-full bg-secondary/10 blur-[120px] pointer-events-none" />
+      {/* Animated SoftAurora Background */}
+      <div className="absolute inset-0 z-0">
+        <SoftAurora
+          speed={0.6}
+          scale={1.5}
+          brightness={0.6}
+          color1="#f7f7f7"
+          color2="#e100ff"
+          noiseFrequency={2.5}
+          noiseAmplitude={1}
+          bandHeight={0.5}
+          bandSpread={1}
+          octaveDecay={0.1}
+          layerOffset={0}
+          colorSpeed={1}
+          enableMouseInteraction
+          mouseInfluence={0.05}
+        />
+      </div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
         {/* Left Column - Content */}
@@ -188,10 +233,10 @@ export function Hero() {
           </p>
 
           <div className="flex flex-wrap gap-4 w-full sm:w-auto">
-            <Button size="lg" className="w-full sm:w-auto shadow-lg shadow-primary/25 hover:shadow-primary/35 transition-all duration-300">
-              Start Creating <ArrowRight className="size-4 ml-1.5" />
+            <Button size="lg" className="w-full sm:w-auto shadow-lg shadow-primary/25 hover:shadow-primary/35 transition-all duration-300 px-6">
+              Buy Credits <ArrowRight className="size-4 ml-1.3" />
             </Button>
-            <Button variant="outline" size="lg" className="w-full sm:w-auto hover:bg-muted/50 transition-colors">
+            <Button variant="outline" size="lg" className="w-full sm:w-auto hover:bg-muted/50 transition-colors  px-6">
               See What’s Included
             </Button>
           </div>
