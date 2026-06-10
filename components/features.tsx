@@ -33,6 +33,22 @@ interface FeatureListItem {
   linkHref: string;
 }
 
+interface FeatureTheme {
+  badge: string;
+  cardDefault: string;
+  cardHover: string;
+  cardHoverShadow: string;
+  iconDefault: string;
+  iconHover: string;
+  textDefault: string;
+  textHover: string;
+  boxDefault: string;
+  boxHoverBorder: string;
+  boxHoverShadow: string;
+  buttonHover: string;
+  titleGradient: string;
+}
+
 interface FeatureSection {
   tag: string;
   title: string;
@@ -41,6 +57,7 @@ interface FeatureSection {
   videoSrc: string;
   ctaText: string;
   ctaHref: string;
+  theme: FeatureTheme;
 }
 
 const featuresData: FeatureSection[] = [
@@ -58,7 +75,22 @@ const featuresData: FeatureSection[] = [
       { icon: Megaphone, text: "Online Ads", linkHref: "#" }
     ],
     ctaText: "Explore Image Generation Tools",
-    ctaHref: "#pricing"
+    ctaHref: "#pricing",
+    theme: {
+      badge: "text-sky-400 bg-sky-500/10 border-sky-500/20",
+      cardDefault: "border-sky-500/15 bg-sky-500/[0.03]",
+      cardHover: "hover:border-sky-400/40 hover:bg-sky-500/[0.08]",
+      cardHoverShadow: "hover:shadow-[0_0_20px_-5px_rgba(56,189,248,0.2)]",
+      iconDefault: "text-sky-400/70",
+      iconHover: "group-hover/card:text-sky-300 group-hover/card:scale-110",
+      textDefault: "text-slate-200/90",
+      textHover: "group-hover/card:text-sky-200",
+      boxDefault: "border-sky-500/20 bg-card/40",
+      boxHoverBorder: "group-hover/box:border-sky-400/40",
+      boxHoverShadow: "group-hover/box:shadow-[0_0_40px_-10px_rgba(56,189,248,0.25)]",
+      buttonHover: "hover:text-sky-400 hover:border-sky-500/40 hover:bg-sky-500/5",
+      titleGradient: "bg-gradient-to-r from-white via-slate-100 to-sky-300"
+    }
   },
   {
     tag: "VIDEO TOOLS",
@@ -74,11 +106,26 @@ const featuresData: FeatureSection[] = [
       { icon: Play, text: "Youtube Videos", linkHref: "#" }
     ],
     ctaText: "Try AI Video Synthesis",
-    ctaHref: "#pricing"
+    ctaHref: "#pricing",
+    theme: {
+      badge: "text-violet-400 bg-violet-500/10 border-violet-500/20",
+      cardDefault: "border-violet-500/15 bg-violet-500/[0.03]",
+      cardHover: "hover:border-violet-400/40 hover:bg-violet-500/[0.08]",
+      cardHoverShadow: "hover:shadow-[0_0_20px_-5px_rgba(139,92,246,0.2)]",
+      iconDefault: "text-violet-400/70",
+      iconHover: "group-hover/card:text-violet-300 group-hover/card:scale-110",
+      textDefault: "text-slate-200/90",
+      textHover: "group-hover/card:text-violet-200",
+      boxDefault: "border-violet-500/20 bg-card/40",
+      boxHoverBorder: "group-hover/box:border-violet-400/40",
+      boxHoverShadow: "group-hover/box:shadow-[0_0_40px_-10px_rgba(139,92,246,0.25)]",
+      buttonHover: "hover:text-violet-400 hover:border-violet-500/40 hover:bg-violet-500/5",
+      titleGradient: "bg-gradient-to-r from-white via-slate-100 to-violet-300"
+    }
   },
   {
     tag: "AUDIO TOOLS",
-    title: "High-Fidelity AI Voiceovers & Audio Synthesis",
+    title: "AI Voiceovers & Audio Synthesis",
     copy: "Generate hyper-realistic voiceovers, replicate speech profiles, swap vocal characters, or construct soundtrack ambient soundscapes instantly.",
     videoSrc: "/animation/audio.mp4",
     items: [
@@ -90,7 +137,22 @@ const featuresData: FeatureSection[] = [
       { icon: Settings, text: "Audio Plugins", linkHref: "#" }
     ],
     ctaText: "Synthesize Voice & Audio",
-    ctaHref: "#pricing"
+    ctaHref: "#pricing",
+    theme: {
+      badge: "text-pink-400 bg-pink-500/10 border-pink-500/20",
+      cardDefault: "border-pink-500/15 bg-pink-500/[0.03]",
+      cardHover: "hover:border-pink-400/40 hover:bg-pink-500/[0.08]",
+      cardHoverShadow: "hover:shadow-[0_0_20px_-5px_rgba(236,72,153,0.2)]",
+      iconDefault: "text-pink-400/70",
+      iconHover: "group-hover/card:text-pink-300 group-hover/card:scale-110",
+      textDefault: "text-slate-200/90",
+      textHover: "group-hover/card:text-pink-200",
+      boxDefault: "border-pink-500/20 bg-card/40",
+      boxHoverBorder: "group-hover/box:border-pink-400/40",
+      boxHoverShadow: "group-hover/box:shadow-[0_0_40px_-10px_rgba(236,72,153,0.25)]",
+      buttonHover: "hover:text-pink-400 hover:border-pink-500/40 hover:bg-pink-500/5",
+      titleGradient: "bg-gradient-to-r from-white via-slate-100 to-pink-300"
+    }
   }
 ];
 
@@ -142,10 +204,16 @@ export function FeaturesBlock() {
             >
               {/* Row Heading (Centered above columns) */}
               <div className="text-center max-w-3xl mx-auto flex flex-col items-center space-y-4">
-                <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-primary/95 bg-primary/5 border border-primary/20 px-3 py-1 rounded-full">
+                <span className={cn(
+                  "text-[11px] font-bold uppercase tracking-[0.15em] px-3 py-1 rounded-full border transition-colors duration-300",
+                  section.theme.badge
+                )}>
                   {section.tag}
                 </span>
-                <h3 className="text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl text-foreground">
+                <h3 className={cn(
+                  "text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl bg-clip-text text-transparent pb-1",
+                  section.theme.titleGradient
+                )}>
                   {section.title}
                 </h3>
                 <p className="text-sm sm:text-base text-muted-foreground max-w-2xl leading-relaxed">
@@ -159,7 +227,7 @@ export function FeaturesBlock() {
                           asChild
                           variant="outline"
                           size="sm"
-                          className="group"
+                          className={cn("group transition-all duration-300", section.theme.buttonHover)}
                       >
                           <a href={section.ctaHref}>
                               <span>{section.ctaText}</span>
@@ -191,13 +259,26 @@ export function FeaturesBlock() {
                         <a 
                           key={item.text} 
                           href={item.linkHref}
-                          className="aspect-square w-full rounded-2xl border border-border/80 bg-card/45 hover:bg-card/75 hover:border-primary/40 hover:shadow-lg transition-all duration-300 flex flex-col items-center justify-center p-2.5 sm:p-3.5 text-center group/card cursor-pointer"
+                          className={cn(
+                            "aspect-square w-full rounded-2xl border transition-all duration-300 flex flex-col items-center justify-center p-2.5 sm:p-3.5 text-center group/card cursor-pointer",
+                            section.theme.cardDefault,
+                            section.theme.cardHover,
+                            section.theme.cardHoverShadow
+                          )}
                         >
                           {/* Card Icon */}
-                          <Icon className="size-5 sm:size-6 md:size-7 text-muted-foreground group-hover/card:text-primary group-hover/card:scale-110 transition-all duration-300 mb-2 sm:mb-3 flex-shrink-0" />
+                          <Icon className={cn(
+                            "size-5 sm:size-6 md:size-7 transition-all duration-300 mb-2 sm:mb-3 flex-shrink-0",
+                            section.theme.iconDefault,
+                            section.theme.iconHover
+                          )} />
                           
                           {/* Card Text */}
-                          <span className="text-[10px] sm:text-xs md:text-sm font-bold text-foreground/95 group-hover/card:text-primary transition-colors leading-snug max-w-full px-1 text-center">
+                          <span className={cn(
+                            "text-[10px] sm:text-xs md:text-sm font-bold transition-colors leading-snug max-w-full px-1 text-center",
+                            section.theme.textDefault,
+                            section.theme.textHover
+                          )}>
                             {item.text}
                           </span>
                         </a>
@@ -214,9 +295,16 @@ export function FeaturesBlock() {
                   )}
                 >
                   {/* Premium Glassmorphism Box - matches grid height and remains a perfect 16:9 box */}
-                  <div className="h-full w-auto aspect-[16/9] rounded-2xl border border-border/80 bg-card/40 backdrop-blur-md shadow-2xl relative overflow-hidden group/box max-w-full mx-auto">
+                  <div className={cn(
+                    "h-full w-auto aspect-[16/9] rounded-2xl border backdrop-blur-md shadow-2xl relative overflow-hidden group/box max-w-full mx-auto transition-all duration-500",
+                    section.theme.boxDefault,
+                    section.theme.boxHoverShadow
+                  )}>
                     {/* Decorative Border Glow Layer */}
-                    <div className="absolute inset-0 rounded-2xl border border-primary/0 group-hover/box:border-primary/20 transition-all duration-500 z-10 pointer-events-none" />
+                    <div className={cn(
+                      "absolute inset-0 rounded-2xl border border-transparent transition-all duration-500 z-10 pointer-events-none",
+                      section.theme.boxHoverBorder
+                    )} />
                     
                     {/* Full-width and height looping, muted video player */}
                     <video 
