@@ -1,0 +1,123 @@
+import React from "react";
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "@/components/ui/accordion";
+
+export interface FaqItem {
+    id: string;
+    title: React.ReactNode;
+    content: React.ReactNode;
+}
+
+export interface FaqsSectionProps {
+    title?: React.ReactNode;
+    description?: React.ReactNode;
+    items?: FaqItem[];
+    contactSupport?: React.ReactNode;
+    className?: string;
+    headerClassName?: string;
+}
+
+export function FaqsSection({
+    title = "Frequently Asked Questions",
+    description = "Here are some common questions and answers that you might encounter when using Efferd. If you don't find the answer you're looking for, feel free to reach out.",
+    items = defaultQuestions,
+    contactSupport = (
+        <p className="text-muted-foreground">
+            Can't find what you're looking for? Contact our{" "}
+            <a className="text-primary hover:underline" href="#">
+                customer support team
+            </a>
+        </p>
+    ),
+    className = "mx-auto w-full max-w-2xl space-y-7 px-4",
+    headerClassName = "space-y-2",
+}: FaqsSectionProps) {
+    return (
+        <div className={className}>
+            {(title || description) && (
+                <div className={headerClassName}>
+                    {title && (
+                        typeof title === "string" ? (
+                            <h2 className="font-semibold text-3xl md:text-4xl">
+                                {title}
+                            </h2>
+                        ) : (
+                            title
+                        )
+                    )}
+                    {description && (
+                        typeof description === "string" ? (
+                            <p className="max-w-2xl text-muted-foreground">
+                                {description}
+                            </p>
+                        ) : (
+                            description
+                        )
+                    )}
+                </div>
+            )}
+            <Accordion className="rounded-lg border" collapsible type="single">
+                {items.map((item) => (
+                    <AccordionItem className="px-4" key={item.id} value={item.id}>
+                        <AccordionTrigger className="py-4 text-left hover:no-underline focus-visible:underline focus-visible:ring-0">
+                            {item.title}
+                        </AccordionTrigger>
+                        <AccordionContent className="pb-4! text-muted-foreground">
+                            {item.content}
+                        </AccordionContent>
+                    </AccordionItem>
+                ))}
+            </Accordion>
+            {contactSupport}
+        </div>
+    );
+}
+
+const defaultQuestions: FaqItem[] = [
+    {
+        id: "item-1",
+        title: "What is Efferd?",
+        content:
+            "Efferd is a collection of beautifully crafted Shadcn UI blocks and components, designed to help developers build modern websites with ease.",
+    },
+    {
+        id: "item-2",
+        title: "Who can benefit from Efferd?",
+        content:
+            "Efferd is built for founders, product teams, and agencies that want to accelerate idea validation and delivery.",
+    },
+    {
+        id: "item-3",
+        title: "What features does Efferd include?",
+        content:
+            "Efferd offers a collaborative workspace where you can design and build beautiful web applications, with reusable UI blocks, deployment automation, and comprehensive analytics all in one place. With Efferd, you can streamline your team’s workflow and deliver high-quality websites quickly and efficiently.",
+    },
+    {
+        id: "item-4",
+        title: "Can I customize components in Efferd?",
+        content:
+            "Yes. Efferd offers editable design systems and code scaffolding so you can tailor blocks to your brand and workflow.",
+    },
+    {
+        id: "item-5",
+        title: "Does Efferd integrate with my existing tools?",
+        content:
+            "Efferd connects with popular source control, design tools, and cloud providers to fit into your current stack.",
+    },
+    {
+        id: "item-6",
+        title: "How do I get support while using Efferd?",
+        content:
+            "You can access detailed docs, community forums, and dedicated customer success channels for help at any time.",
+    },
+    {
+        id: "item-7",
+        title: "How do I get started with Efferd?",
+        content:
+            "You can access detailed docs, community forums, and dedicated customer success channels for help at any time.",
+    },
+];

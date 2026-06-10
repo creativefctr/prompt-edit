@@ -105,55 +105,96 @@ function MotionCarousel<T = number>(props: PropType<T>) {
     onNext,
   } = useEmblaControls(emblaApi);
 
-  return (
-    <div className={cn(
-      "w-full space-y-4 [--slide-height:9rem] sm:[--slide-height:13rem] md:[--slide-height:18rem] [--slide-spacing:1.5rem] [--slide-size:55%]",
-      containerClassName
-    )}>
-      <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex touch-pan-y touch-pinch-zoom">
-          {slides.map((slide, index) => {
-            const isActive = index === selectedIndex;
+  React.useEffect(() => {
+    if (!emblaApi) return;
 
-            return (
-              <motion.div
-                key={index}
-                className={cn(
-                  "mr-[var(--slide-spacing)] basis-[var(--slide-size)] w-[var(--slide-size)] flex-none flex min-w-0",
-                  slideClassName ? slideClassName : "h-[var(--slide-height)]"
-                )}
-              >
-                {renderSlide ? (
-                  <motion.div
-                    className="size-full"
-                    initial={false}
-                    animate={{
-                      scale: 1,
-                    }}
-                    transition={transition}
-                  >
-                    {renderSlide(slide, index, isActive)}
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    className="size-full flex items-center justify-center text-3xl md:text-5xl font-semibold select-none border-4 rounded-xl"
-                    initial={false}
-                    animate={{
-                      scale: 1,
-                    }}
-                    transition={transition}
-                  >
-                    {Number(slide) + 1}
-                  </motion.div>
-                )}
-              </motion.div>
-            );
-          })}
+    let autoplayId: ReturnType<typeof setInterval>;
+
+    const startAutoplay = () => {
+      stopAutoplay();
+      autoplayId = setInterval(() => {
+        emblaApi.scrollNext();
+      }, 2000);
+    };
+
+    const stopAutoplay = () => {
+      if (autoplayId) clearInterval(autoplayId);
+    };
+
+    startAutoplay();
+
+    emblaApi
+      .on('pointerDown', stopAutoplay)
+      .on('pointerUp', startAutoplay)
+      .on('select', startAutoplay);
+
+    return () => {
+      stopAutoplay();
+      emblaApi
+        .off('pointerDown', stopAutoplay)
+        .off('pointerUp', startAutoplay)
+        .off('select', startAutoplay);
+    };
+  }, [emblaApi]);
+
+  return (
+    <div
+      className={cn(
+        "w-full mx-auto space-y-4 [--slide-height:9rem] sm:[--slide-height:13rem] md:[--slide-height:18rem] [--slide-spacing:1.5rem] [--slide-size:55%]",
+        containerClassName
+      )}
+      style={{ maxWidth: 'var(--viewport-width, 100%)' }}
+    >
+      <div className="relative">
+        <div className="overflow-hidden" ref={emblaRef}>
+          <div className="flex touch-pan-y touch-pinch-zoom">
+            {slides.map((slide, index) => {
+              const isActive = index === selectedIndex;
+
+              return (
+                <motion.div
+                  key={index}
+                  className={cn(
+                    "mr-[var(--slide-spacing)] basis-[var(--slide-size)] w-[var(--slide-size)] flex-none flex min-w-0",
+                    slideClassName ? slideClassName : "h-[var(--slide-height)]"
+                  )}
+                >
+                  {renderSlide ? (
+                    <motion.div
+                      className="size-full"
+                      initial={false}
+                      animate={{
+                        scale: 1,
+                      }}
+                      transition={transition}
+                    >
+                      {renderSlide(slide, index, isActive)}
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      className="size-full flex items-center justify-center text-3xl md:text-5xl font-semibold select-none border-4 rounded-xl"
+                      initial={false}
+                      animate={{
+                        scale: 1,
+                      }}
+                      transition={transition}
+                    >
+                      {Number(slide) + 1}
+                    </motion.div>
+                  )}
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
+
+        {/* Left & Right fading overlays */}
+        <div className="absolute inset-y-0 left-0 w-12 sm:w-20 lg:w-24 bg-gradient-to-r from-[#030303] to-transparent pointer-events-none z-20" />
+        <div className="absolute inset-y-0 right-0 w-12 sm:w-20 lg:w-24 bg-gradient-to-l from-[#030303] to-transparent pointer-events-none z-20" />
       </div>
 
       <div className="flex justify-between items-center px-4">
-        <Button size="icon" onClick={onPrev} disabled={prevDisabled}>
+        <Button size="icon" variant="outline" onClick={onPrev} disabled={prevDisabled}>
           <ChevronLeft className="size-5" />
         </Button>
 
@@ -168,7 +209,7 @@ function MotionCarousel<T = number>(props: PropType<T>) {
           ))}
         </div>
 
-        <Button size="icon" onClick={onNext} disabled={nextDisabled}>
+        <Button size="icon" variant="outline" onClick={onNext} disabled={nextDisabled}>
           <ChevronRight className="size-5" />
         </Button>
       </div>
@@ -183,7 +224,7 @@ function DotButton({ selected = false, label, onClick }: DotButtonProps) {
       onClick={onClick}
       layout
       initial={false}
-      className="flex cursor-pointer select-none items-center justify-center rounded-full border-none bg-primary text-primary-foreground text-sm"
+      className="flex cursor-pointer select-none items-center justify-center rounded-full border border-border bg-background hover:bg-muted text-foreground text-sm"
       animate={{
         width: selected ? 68 : 12,
         height: selected ? 28 : 12,

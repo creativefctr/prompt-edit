@@ -239,13 +239,13 @@ function LibraryCarousel() {
         </div>
 
       {/* Slightly wider than Features (max-w-7xl) and center aligned */}
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-0 sm:px-6">
         <MotionCarousel
           slides={TEMPLATE_PACKS}
           options={OPTIONS}
           renderSlide={renderSlide}
           slideClassName="h-auto aspect-[3/4]"
-          containerClassName="[--slide-size:150px] sm:[--slide-size:180px] md:[--slide-size:200px] lg:[--slide-size:220px] [--slide-spacing:1.25rem]"
+          containerClassName="[--slide-size:150px] [--slide-spacing:20px] [--viewport-width:calc(2*(var(--slide-size)+var(--slide-spacing)))] sm:[--slide-size:180px] md:[--slide-size:200px] lg:[--slide-size:220px] lg:[--viewport-width:calc(4*(var(--slide-size)+var(--slide-spacing)))]"
         />
       </div>
     </section>

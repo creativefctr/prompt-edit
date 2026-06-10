@@ -1,5 +1,5 @@
 import React from "react";
-import { ChevronDown } from "lucide-react";
+import { FaqsSection } from "./faqs-section";
 
 interface FaqItem {
   q: string;
@@ -145,31 +145,22 @@ const faqs: FaqItem[] = [
 ];
 
 export function Faq() {
+  const faqItems = faqs.map((faq, idx) => ({
+    id: `faq-item-${idx}`,
+    title: faq.q,
+    content: faq.a,
+  }));
+
   return (
     <section className="py-16 px-6 max-w-3xl mx-auto">
-      <div className="space-y-8">
-        <div className="text-center space-y-2">
-          <h2 className="text-3xl font-bold tracking-tight">Commonly Asked Questions</h2>
-          <p className="text-muted-foreground">Find answers to common questions about the platform.</p>
-        </div>
-
-        <div className="space-y-4 pt-4">
-          {faqs.map((faq, idx) => (
-            <details
-              key={idx}
-              className="group border border-border rounded-lg bg-card text-card-foreground p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer"
-            >
-              <summary className="flex justify-between items-center font-medium focus:outline-none">
-                <span>{faq.q}</span>
-                <ChevronDown className="size-5 text-muted-foreground transition-transform duration-300 group-open:rotate-180" />
-              </summary>
-              <div className="mt-4 text-muted-foreground text-sm leading-relaxed transition-opacity duration-300 group-open:opacity-100">
-                {faq.a}
-              </div>
-            </details>
-          ))}
-        </div>
-      </div>
+      <FaqsSection
+        title={<h2 className="text-3xl font-bold tracking-tight">Commonly Asked Questions</h2>}
+        description={<p className="text-muted-foreground">Find answers to common questions about the platform.</p>}
+        items={faqItems}
+        contactSupport={null}
+        className="w-full space-y-7"
+        headerClassName="text-center space-y-2"
+      />
     </section>
   );
 }
