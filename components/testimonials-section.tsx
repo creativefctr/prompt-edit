@@ -94,7 +94,7 @@ export function TestimonialsSection() {
 
 						<figcaption className="flex flex-col justify-between h-full space-y-4 text-center md:text-left">
 							<blockquote className="text-sm md:text-base text-muted-foreground leading-snug tracking-tight">
-								&quot;<span className="font-medium text-foreground">{t.quote}</span>&quot;
+								&quot;<span className="font-medium text-muted-foreground">{t.quote}</span>&quot;
 							</blockquote>
 
 							<div>

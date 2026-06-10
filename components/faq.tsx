@@ -154,7 +154,7 @@ export function Faq() {
   return (
     <section className="py-16 px-6 max-w-3xl mx-auto">
       <FaqsSection
-        title={<h2 className="text-3xl font-bold tracking-tight">Commonly Asked Questions</h2>}
+        title={<h2 className="text-3xl font-bold tracking-tight">Frequently Asked Questions</h2>}
         description={<p className="text-muted-foreground">Find answers to common questions about the platform.</p>}
         items={faqItems}
         contactSupport={null}
