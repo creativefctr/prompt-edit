@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Check, Sparkles, Command } from "lucide-react";
+import { Check, Sparkles, Command, ArrowRight } from "lucide-react";
 
 export function Pricing() {
   return (
@@ -36,8 +36,8 @@ export function Pricing() {
               <span className="text-muted-foreground font-medium">One-time payment</span>
             </div>
             
-            <Button variant="outline" size="lg" className="w-full mt-8 bg-background hover:bg-muted">
-              Buy Credit Pack
+            <Button variant="outline" size="lg" className="w-full mt-8 bg-background hover:bg-muted group">
+              Buy Credit Pack <ArrowRight className="size-4 ml-1.5 transition-transform duration-300 group-hover:translate-x-1" />
             </Button>
             
             <div className="w-full h-px bg-border my-8" />
@@ -87,7 +87,7 @@ export function Pricing() {
               </div>
               
               <Button size="lg" className="w-full mt-8 group">
-                Subscribe to Creator Membership
+                Subscribe to Creator Membership <ArrowRight className="size-4 ml-1.5 transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
               
               <div className="w-full h-px bg-border my-8" />
