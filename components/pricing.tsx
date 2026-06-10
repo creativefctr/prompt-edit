@@ -4,8 +4,8 @@ import { Check, Sparkles, Command } from "lucide-react";
 
 export function Pricing() {
   return (
-    <section className="py-24 px-6 max-w-5xl mx-auto border-b border-border">
-      <div className="space-y-16">
+    <section id="pricing" className="py-24 px-6 border-b border-border bg-background">
+      <div className="max-w-5xl mx-auto space-y-16">
         
         {/* Section Header */}
         <div className="text-center space-y-3">
@@ -33,7 +33,7 @@ export function Pricing() {
               <span className="text-muted-foreground font-medium">One-time payment</span>
             </div>
             
-            <Button variant="outline" className="w-full mt-8 rounded-full h-12 font-medium bg-background hover:bg-muted text-base">
+            <Button variant="outline" size="lg" className="w-full mt-8 bg-background hover:bg-muted">
               Buy Credit Pack
             </Button>
             
@@ -71,7 +71,7 @@ export function Pricing() {
                   <Command className="size-6 text-foreground" strokeWidth={1.5} />
                 </div>
                 <span className="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full tracking-wide">
-                  Trending
+                  Best Value
                 </span>
               </div>
               
@@ -83,7 +83,7 @@ export function Pricing() {
                 <span className="text-muted-foreground font-medium">/ month</span>
               </div>
               
-              <Button className="w-full mt-8 rounded-full h-12 font-medium text-base bg-foreground text-background hover:bg-foreground/90">
+              <Button size="lg" className="w-full mt-8 bg-foreground text-background hover:bg-foreground/90">
                 Subscribe to Creator Membership
               </Button>
               

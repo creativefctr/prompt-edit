@@ -192,7 +192,7 @@ function TemplatePackCard({ pack }: { pack: TemplatePack }) {
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden py-16 lg:py-24 px-6 border-b border-border bg-background">
+    <section className="relative overflow-hidden py-16 lg:py-24 px-6 border-border bg-background">
       {/* Animated SoftAurora Background */}
       <div className="absolute inset-0 z-0">
         <SoftAurora
@@ -215,33 +215,35 @@ export function Hero() {
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
         {/* Left Column - Content */}
-        <div className="col-span-12 lg:col-span-5 flex flex-col items-start text-left space-y-6">
+        <div className="col-span-12 lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-xs text-primary font-medium hover:bg-primary/10 transition-colors cursor-default">
             <Sparkles className="size-3.5 animate-pulse" />
-            <span>Built for Content Creators</span>
+            <span>Prompt Edit</span>
           </div>
 
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-foreground leading-tight">
-            The All-in-One AI Marketplace for{" "}
-            <span className="bg-gradient-to-r from-primary to-violet-500 bg-clip-text text-transparent">
+          <div className="pb-4">
+              <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-foreground leading-tight">
+                  The All-in-One AI Marketplace for{" "}
+                  <span className="bg-gradient-to-r from-primary to-violet-500 bg-clip-text text-transparent">
               Content Creators
             </span>
-          </h1>
+              </h1>
 
-          <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
-            Create AI Images, Videos, Voiceovers, Ads, Music & More — Without Expensive Monthly Subscriptions! Access all top models from a single pay-per-operation dashboard.
-          </p>
+              <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
+                  Create AI Images, Videos, Voiceovers, Ads, Music & More — Without Expensive Monthly Subscriptions! Access all top models from a single pay-per-operation dashboard.
+              </p>
+          </div>
 
-          <div className="flex flex-wrap gap-4 w-full sm:w-auto">
-            <Button size="lg" className="w-full sm:w-auto shadow-lg shadow-primary/25 hover:shadow-primary/35 transition-all duration-300 px-6">
-              Buy Credits <ArrowRight className="size-4 ml-1.3" />
+          <div className="flex flex-wrap justify-center lg:justify-start gap-4 w-full sm:w-auto">
+            <Button size="lg" className="w-full sm:w-auto group">
+              Buy Credits <ArrowRight className="size-4 ml-1.5 transition-transform duration-300 group-hover:translate-x-1" />
             </Button>
-            <Button variant="outline" size="lg" className="w-full sm:w-auto hover:bg-muted/50 transition-colors  px-6">
+            <Button variant="outline" size="lg" className="w-full sm:w-auto">
               See What’s Included
             </Button>
           </div>
 
-          <div className="flex items-center gap-6 pt-4 border-t border-border w-full">
+          <div className="flex items-center justify-center lg:justify-start gap-6 pt-4 w-full">
             <div>
               <p className="text-2xl font-bold text-foreground">16+</p>
               <p className="text-xs text-muted-foreground">Foundation Models</p>
@@ -286,7 +288,7 @@ export function Hero() {
                 </TabsList>
               </div>
 
-              <TabsContents className="flex-1 flex flex-col justify-start">
+              <TabsContents className="flex-1 flex flex-col justify-center">
                 {/* Video Tab */}
                 <TabsContent value="video" className="outline-none">
                   <ModelGrid models={videoModels} moreCount={8} moreLabel="Explore video tools" />

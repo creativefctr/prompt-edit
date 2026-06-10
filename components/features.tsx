@@ -2,6 +2,8 @@
 
 import React from "react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import LogoLoop from "./LogoLoop";
 import { 
   Sparkles, 
   Video, 
@@ -37,6 +39,8 @@ interface FeatureSection {
   copy: string;
   items: FeatureListItem[];
   videoSrc: string;
+  ctaText: string;
+  ctaHref: string;
 }
 
 const featuresData: FeatureSection[] = [
@@ -52,7 +56,9 @@ const featuresData: FeatureSection[] = [
       { icon: Wand2, text: "Image Editing", linkHref: "#" },
       { icon: Play, text: "Youtube Thumbnails", linkHref: "#" },
       { icon: Megaphone, text: "Online Ads", linkHref: "#" }
-    ]
+    ],
+    ctaText: "Explore Image Generation Tools",
+    ctaHref: "#pricing"
   },
   {
     tag: "VIDEO TOOLS",
@@ -66,7 +72,9 @@ const featuresData: FeatureSection[] = [
       { icon: Tv, text: "Video Ads", linkHref: "#" },
       { icon: Smartphone, text: "Reels & Tiktoks", linkHref: "#" },
       { icon: Play, text: "Youtube Videos", linkHref: "#" }
-    ]
+    ],
+    ctaText: "Try AI Video Synthesis",
+    ctaHref: "#pricing"
   },
   {
     tag: "AUDIO TOOLS",
@@ -80,14 +88,51 @@ const featuresData: FeatureSection[] = [
       { icon: Volume2, text: "AI sound effects", linkHref: "#" },
       { icon: Music, text: "AI Music Generation", linkHref: "#" },
       { icon: Settings, text: "Audio Plugins", linkHref: "#" }
-    ]
+    ],
+    ctaText: "Synthesize Voice & Audio",
+    ctaHref: "#pricing"
   }
 ];
 
+const featuresLogos = [
+  { src: "/logos/gpt.svg", alt: "GPT-4", title: "OpenAI GPT" },
+  { src: "/logos/claude-color.svg", alt: "Claude", title: "Anthropic Claude" },
+  { src: "/logos/gemini-color.svg", alt: "Gemini", title: "Google Gemini" },
+  { src: "/logos/dalle-color.svg", alt: "DALL-E", title: "DALL-E" },
+  { src: "/logos/midjourney.svg", alt: "Midjourney", title: "Midjourney" },
+  { src: "/logos/flux.svg", alt: "Flux", title: "Flux" },
+  { src: "/logos/sora-color.svg", alt: "Sora", title: "Sora" },
+  { src: "/logos/runway.svg", alt: "Runway", title: "Runway" },
+  { src: "/logos/luma-color.svg", alt: "Luma", title: "Luma" },
+  { src: "/logos/elevenlabs.svg", alt: "ElevenLabs", title: "ElevenLabs" },
+  { src: "/logos/suno.svg", alt: "Suno", title: "Suno" },
+  { src: "/logos/udio-color.svg", alt: "Udio", title: "Udio" },
+];
+
+function FeaturesLogoLoop() {
+  return (
+    <div className="w-full max-w-lg mx-auto mt-4 px-4 overflow-hidden">
+      <LogoLoop
+        logos={featuresLogos}
+        speed={40}
+        direction="left"
+        logoHeight={24}
+        gap={36}
+        pauseOnHover={true}
+        scaleOnHover={true}
+        fadeOut={true}
+        fadeOutColor="var(--background)"
+        ariaLabel="Supported AI Models"
+        className="opacity-45 hover:opacity-90 transition-opacity duration-300 [&_img]:brightness-0 [&_img]:invert"
+      />
+    </div>
+  );
+}
+
 export function FeaturesBlock() {
   return (
-    <section className="relative py-20 lg:py-28 overflow-hidden bg-background">
-      <div className="max-w-6xl mx-auto px-6 space-y-36 lg:space-y-48">
+    <section className="relative py-20 lg:py-28 overflow-hidden bg-background border-b border-border">
+      <div className="max-w-6xl mx-auto px-6 space-y-48 lg:space-y-64">
         {featuresData.map((section, idx) => {
           const isEven = idx % 2 === 0;
           return (
@@ -106,6 +151,7 @@ export function FeaturesBlock() {
                 <p className="text-sm sm:text-base text-muted-foreground max-w-2xl leading-relaxed">
                   {section.copy}
                 </p>
+                <FeaturesLogoLoop />
               </div>
 
               {/* Columns Grid: Using custom mathematical ratios to align square cards and 16:9 mockup box exactly in height */}
@@ -168,6 +214,20 @@ export function FeaturesBlock() {
                     />
                   </div>
                 </div>
+              </div>
+
+              {/* Customized Center-aligned CTA */}
+              <div className="flex justify-center pt-2 sm:pt-4">
+                <Button 
+                  asChild
+                  size="lg"
+                  className="group"
+                >
+                  <a href={section.ctaHref}>
+                    <span>{section.ctaText}</span>
+                    <ArrowRight className="size-4 ml-1.5 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2.5} />
+                  </a>
+                </Button>
               </div>
             </div>
           );

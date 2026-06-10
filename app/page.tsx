@@ -4,6 +4,7 @@ import { FeaturesBlock } from "@/components/features";
 import { Pricing } from "@/components/pricing";
 import { Faq } from "@/components/faq";
 import { TestimonialsSection } from "@/components/testimonials-section";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
@@ -20,9 +21,9 @@ export default function Home() {
           </nav>
           <div className="flex items-center gap-4">
             <a href="#" className="text-sm font-medium hover:text-foreground transition-colors">Sign In</a>
-            <a href="#" className="text-sm font-medium bg-foreground text-background px-4 py-2 rounded-md hover:opacity-90 transition-opacity">
-              Get Started
-            </a>
+            <Button asChild>
+              <a href="#">Get Started</a>
+            </Button>
           </div>
         </div>
       </header>
