@@ -12,7 +12,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
       {/* Header Placeholder */}
       <header className="border-b border-border sticky top-0 bg-background/80 backdrop-blur-sm z-50">
-        <div className="max-w-6xl mx-auto h-16 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto h-16 flex items-center justify-between px-4 sm:px-6">
           <img src="/logo-dark.png" alt="Prompt Edit Logo" className="w-auto h-3/5" />
           <nav className="hidden md:flex gap-6 text-sm text-muted-foreground font-medium">
             <a href="#" className="hover:text-foreground transition-colors">Features</a>

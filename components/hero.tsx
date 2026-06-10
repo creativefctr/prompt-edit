@@ -92,8 +92,8 @@ const templatePacks: TemplatePack[] = [
 
 function ModelCard({ model }: { model: AIModel }) {
   return (
-    <div className="group/item flex items-center justify-between py-3 px-4 rounded-xl border border-border bg-background/50 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300 relative">
-      <div className="flex items-center gap-3">
+    <div className="group/item flex items-center justify-between py-3 px-3 sm:px-4 rounded-xl border border-border bg-background/50 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300 relative min-w-0 gap-2 sm:gap-3">
+      <div className="flex items-center gap-2 sm:gap-3 min-w-0">
         <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xs select-none shadow-sm ${model.iconBg} ${model.iconColor} transition-transform duration-300 group-hover/item:scale-105 overflow-hidden ${model.logo ? "p-2" : ""}`}>
           {model.logo ? (
             model.logo.isColor ? (
@@ -121,11 +121,11 @@ function ModelCard({ model }: { model: AIModel }) {
             model.avatarText
           )}
         </div>
-        <div>
-          <h4 className="font-semibold text-sm text-foreground transition-colors group-hover/item:text-primary">
+        <div className="min-w-0">
+          <h4 className="font-semibold text-sm text-foreground transition-colors group-hover/item:text-primary truncate">
             {model.name}
           </h4>
-          <p className="text-[11px] text-muted-foreground">{model.provider}</p>
+          <p className="text-[11px] text-muted-foreground truncate">{model.provider}</p>
         </div>
       </div>
       <div className="text-right">
@@ -192,7 +192,7 @@ function TemplatePackCard({ pack }: { pack: TemplatePack }) {
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden py-16 lg:py-24 px-6 border-border bg-background">
+    <section className="relative overflow-hidden py-16 lg:py-24 px-4 sm:px-6 border-border bg-background">
       {/* Animated SoftAurora Background */}
       <div className="absolute inset-0 z-0">
         <SoftAurora
@@ -215,14 +215,14 @@ export function Hero() {
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
         {/* Left Column - Content */}
-        <div className="col-span-12 lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
+        <div className="col-span-1 lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 min-w-0">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-xs text-primary font-medium hover:bg-primary/10 transition-colors cursor-default">
             <Sparkles className="size-3.5 animate-pulse" />
             <span>Prompt Edit</span>
           </div>
 
           <div className="pb-4">
-              <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-foreground leading-tight">
+              <h1 className="text-3xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-foreground leading-tight">
                   The All-in-One AI Marketplace for{" "}
                   <span className="bg-gradient-to-r from-blue-300 to-blue-400 bg-clip-text text-transparent">
               Creators
@@ -243,45 +243,45 @@ export function Hero() {
             </Button>
           </div>
 
-          <div className="flex items-center justify-center lg:justify-start gap-6 pt-4 w-full">
-            <div>
+          <div className="flex flex-row items-center justify-center lg:justify-start gap-4 sm:gap-6 pt-4 w-full">
+            <div className="text-center sm:text-left">
               <p className="text-2xl font-bold text-foreground">16+</p>
-              <p className="text-xs text-muted-foreground">Foundation Models</p>
+              <p className="text-[11px] sm:text-xs text-muted-foreground">Foundation Models</p>
             </div>
-            <div className="h-8 w-px bg-border" />
-            <div>
+            <div className="h-8 w-px bg-border shrink-0" />
+            <div className="text-center sm:text-left">
               <p className="text-2xl font-bold text-foreground">17,000+</p>
-              <p className="text-xs text-muted-foreground">Tempalte Assets</p>
+              <p className="text-[11px] sm:text-xs text-muted-foreground">Template Assets</p>
             </div>
           </div>
         </div>
 
         {/* Right Column - Box containing interactive tabs & grids */}
-        <div className="col-span-12 lg:col-span-7 flex justify-center lg:justify-end w-full">
-          <div className="w-full max-w-2xl rounded-2xl border border-border/80 bg-card/60 backdrop-blur-md py-6 px-8 shadow-2xl relative overflow-hidden group h-[500px] flex flex-col justify-between transition-all duration-300">
+        <div className="col-span-1 lg:col-span-7 flex justify-center lg:justify-end w-full min-w-0">
+          <div className="w-full max-w-2xl rounded-2xl border border-border/80 bg-card/60 backdrop-blur-md py-5 px-3 sm:py-6 sm:px-8 shadow-2xl relative overflow-hidden group h-auto min-h-[500px] lg:h-[500px] flex flex-col justify-between transition-all duration-300 min-w-0">
             {/* Corner Decorative Lights */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-3xl rounded-full opacity-50 group-hover:opacity-80 transition-opacity" />
 
-            <Tabs defaultValue="video" className="w-full h-full flex flex-col justify-between">
-              <div className="relative w-full h-12 mb-4 flex items-center justify-center">
-                <TabsList className="grid w-full grid-cols-5 p-1">
-                  <TabsTrigger value="video" className="flex flex-col sm:flex-row items-center justify-center gap-1 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold">
+            <Tabs defaultValue="video" className="w-full flex-1 flex flex-col justify-between min-w-0">
+              <div className="relative w-full max-w-full h-12 mb-4 flex items-center justify-center min-w-0 overflow-hidden">
+                <TabsList className="flex !w-full overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] justify-start sm:justify-center sm:grid sm:grid-cols-5 p-1 min-w-0">
+                  <TabsTrigger value="video" className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1.5 py-0.5 sm:py-1 text-[9px] min-[360px]:text-[10px] sm:text-xs font-semibold px-0.5 flex-shrink-0">
                     <Video className="size-3.5" />
                     <span>Video</span>
                   </TabsTrigger>
-                  <TabsTrigger value="image" className="flex flex-col sm:flex-row items-center justify-center gap-1 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold">
+                  <TabsTrigger value="image" className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1.5 py-0.5 sm:py-1 text-[9px] min-[360px]:text-[10px] sm:text-xs font-semibold px-0.5 flex-shrink-0">
                     <ImageIcon className="size-3.5" />
                     <span>Image</span>
                   </TabsTrigger>
-                  <TabsTrigger value="text" className="flex flex-col sm:flex-row items-center justify-center gap-1 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold">
+                  <TabsTrigger value="text" className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1.5 py-0.5 sm:py-1 text-[9px] min-[360px]:text-[10px] sm:text-xs font-semibold px-0.5 flex-shrink-0">
                     <FileText className="size-3.5" />
                     <span>Text</span>
                   </TabsTrigger>
-                  <TabsTrigger value="audio" className="flex flex-col sm:flex-row items-center justify-center gap-1 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold">
+                  <TabsTrigger value="audio" className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1.5 py-0.5 sm:py-1 text-[9px] min-[360px]:text-[10px] sm:text-xs font-semibold px-0.5 flex-shrink-0">
                     <Music className="size-3.5" />
                     <span>Audio</span>
                   </TabsTrigger>
-                  <TabsTrigger value="templates" className="flex flex-col sm:flex-row items-center justify-center gap-1 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold">
+                  <TabsTrigger value="templates" className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1.5 py-0.5 sm:py-1 text-[9px] min-[360px]:text-[10px] sm:text-xs font-semibold px-0.5 flex-shrink-0">
                     <Layers className="size-3.5" />
                     <span>Templates</span>
                   </TabsTrigger>

@@ -194,7 +194,7 @@ function FeaturesLogoLoop() {
 export function FeaturesBlock() {
   return (
     <section className="relative py-20 lg:py-28 overflow-hidden bg-background border-b border-border">
-      <div className="max-w-6xl mx-auto px-6 space-y-48 lg:space-y-64">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-48 lg:space-y-64">
         {featuresData.map((section, idx) => {
           const isEven = idx % 2 === 0;
           return (
@@ -211,7 +211,7 @@ export function FeaturesBlock() {
                   {section.tag}
                 </span>
                 <h3 className={cn(
-                  "text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl bg-clip-text text-transparent pb-1",
+                  "text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl bg-clip-text text-transparent pb-1",
                   section.theme.titleGradient
                 )}>
                   {section.title}
@@ -268,14 +268,14 @@ export function FeaturesBlock() {
                         >
                           {/* Card Icon */}
                           <Icon className={cn(
-                            "size-5 sm:size-6 md:size-7 transition-all duration-300 mb-2 sm:mb-3 flex-shrink-0",
+                            "size-6 sm:size-7 md:size-8 lg:size-7 xl:size-8 transition-all duration-300 mb-2 sm:mb-3 md:mb-4 lg:mb-3 flex-shrink-0",
                             section.theme.iconDefault,
                             section.theme.iconHover
                           )} />
                           
                           {/* Card Text */}
                           <span className={cn(
-                            "text-[10px] sm:text-xs md:text-sm font-bold transition-colors leading-snug max-w-full px-1 text-center",
+                            "text-xs sm:text-sm md:text-base lg:text-sm xl:text-base font-bold transition-colors leading-snug max-w-full px-1 text-center",
                             section.theme.textDefault,
                             section.theme.textHover
                           )}>
@@ -296,7 +296,7 @@ export function FeaturesBlock() {
                 >
                   {/* Premium Glassmorphism Box - matches grid height and remains a perfect 16:9 box */}
                   <div className={cn(
-                    "h-full w-auto aspect-[16/9] rounded-2xl border backdrop-blur-md shadow-2xl relative overflow-hidden group/box max-w-full mx-auto transition-all duration-500",
+                    "w-full h-auto lg:h-full lg:w-auto aspect-[16/9] rounded-2xl border backdrop-blur-md shadow-2xl relative overflow-hidden group/box max-w-full mx-auto transition-all duration-500",
                     section.theme.boxDefault,
                     section.theme.boxHoverShadow
                   )}>
