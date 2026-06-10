@@ -152,6 +152,21 @@ export function FeaturesBlock() {
                   {section.copy}
                 </p>
                 <FeaturesLogoLoop />
+
+                  {/* Customized Center-aligned CTA */}
+                  <div className="flex justify-center pt-2 sm:pt-4">
+                      <Button
+                          asChild
+                          variant="default"
+                          size="sm"
+                          className="group"
+                      >
+                          <a href={section.ctaHref}>
+                              <span>{section.ctaText}</span>
+                              <ArrowRight className="size-4 ml-1.5 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2.5} />
+                          </a>
+                      </Button>
+                  </div>
               </div>
 
               {/* Columns Grid: Using custom mathematical ratios to align square cards and 16:9 mockup box exactly in height */}
@@ -214,20 +229,6 @@ export function FeaturesBlock() {
                     />
                   </div>
                 </div>
-              </div>
-
-              {/* Customized Center-aligned CTA */}
-              <div className="flex justify-center pt-2 sm:pt-4">
-                <Button 
-                  asChild
-                  size="lg"
-                  className="group"
-                >
-                  <a href={section.ctaHref}>
-                    <span>{section.ctaText}</span>
-                    <ArrowRight className="size-4 ml-1.5 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2.5} />
-                  </a>
-                </Button>
               </div>
             </div>
           );

@@ -224,8 +224,8 @@ export function Hero() {
           <div className="pb-4">
               <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-foreground leading-tight">
                   The All-in-One AI Marketplace for{" "}
-                  <span className="bg-gradient-to-r from-primary to-violet-500 bg-clip-text text-transparent">
-              Content Creators
+                  <span className="bg-gradient-to-r from-blue-300 to-blue-400 bg-clip-text text-transparent">
+              Creators
             </span>
               </h1>
 
