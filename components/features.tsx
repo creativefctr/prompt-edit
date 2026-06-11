@@ -193,7 +193,7 @@ function FeaturesLogoLoop() {
 
 export function FeaturesBlock() {
   return (
-    <section className="relative py-20 lg:py-28 overflow-hidden bg-background border-b border-border">
+    <section id="features" className="relative py-20 lg:py-28 overflow-hidden bg-background border-b border-border">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-48 lg:space-y-64">
         {featuresData.map((section, idx) => {
           const isEven = idx % 2 === 0;

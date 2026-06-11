@@ -212,7 +212,7 @@ function LibraryCarousel() {
   };
 
   return (
-    <section className="py-24 bg-[#030303] border-y border-zinc-900 overflow-hidden relative">
+    <section id="templates" className="py-24 bg-[#030303] border-y border-zinc-900 overflow-hidden relative">
       {/* Background Magic Rings */}
       <div className="absolute inset-0 w-full h-full pointer-events-none select-none z-0">
         <MagicRings

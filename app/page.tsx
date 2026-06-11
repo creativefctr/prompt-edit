@@ -5,29 +5,12 @@ import LibraryCarousel from "@/components/library-carousel";
 import { Pricing } from "@/components/pricing";
 import { Faq } from "@/components/faq";
 import { TestimonialsSection } from "@/components/testimonials-section";
-import { Button } from "@/components/ui/button";
+import { Navbar } from "@/components/navbar";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
-      {/* Header Placeholder */}
-      <header className="border-b border-border sticky top-0 bg-background/80 backdrop-blur-sm z-50">
-        <div className="max-w-6xl mx-auto h-16 flex items-center justify-between px-4 sm:px-6">
-          <img src="/logo-dark.png" alt="Prompt Edit Logo" className="w-auto h-3/5" />
-          <nav className="hidden md:flex gap-6 text-sm text-muted-foreground font-medium">
-            <a href="#" className="hover:text-foreground transition-colors">Features</a>
-            <a href="#" className="hover:text-foreground transition-colors">Models</a>
-            <a href="#" className="hover:text-foreground transition-colors">Pricing</a>
-            <a href="#" className="hover:text-foreground transition-colors">Docs</a>
-          </nav>
-          <div className="flex items-center gap-4">
-            <a href="#" className="text-sm font-medium hover:text-foreground transition-colors">Sign In</a>
-            <Button asChild>
-              <a href="#">Get Started</a>
-            </Button>
-          </div>
-        </div>
-      </header>
+      <Navbar />
 
       {/* Main Sections */}
       <main className="flex-1">
