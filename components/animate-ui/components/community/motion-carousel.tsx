@@ -14,6 +14,7 @@ type PropType<T = number> = {
   renderSlide?: (slide: T, index: number, isActive: boolean) => React.ReactNode;
   slideClassName?: string;
   containerClassName?: string;
+  hideDots?: boolean;
 };
 
 type EmblaControls = {
@@ -93,7 +94,7 @@ const useEmblaControls = (
 };
 
 function MotionCarousel<T = number>(props: PropType<T>) {
-  const { slides, options, renderSlide, slideClassName, containerClassName } = props;
+  const { slides, options, renderSlide, slideClassName, containerClassName, hideDots } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
   const {
     selectedIndex,
@@ -198,16 +199,18 @@ function MotionCarousel<T = number>(props: PropType<T>) {
           <ChevronLeft className="size-5" />
         </Button>
 
-        <div className="flex flex-wrap justify-end items-center gap-2">
-          {scrollSnaps.map((_, index) => (
-            <DotButton
-              key={index}
-              label={`${index + 1}`}
-              selected={index === selectedIndex}
-              onClick={() => onDotClick(index)}
-            />
-          ))}
-        </div>
+        {!hideDots && (
+          <div className="flex flex-wrap justify-end items-center gap-2">
+            {scrollSnaps.map((_, index) => (
+              <DotButton
+                key={index}
+                label={`${index + 1}`}
+                selected={index === selectedIndex}
+                onClick={() => onDotClick(index)}
+              />
+            ))}
+          </div>
+        )}
 
         <Button size="icon" variant="outline" onClick={onNext} disabled={nextDisabled}>
           <ChevronRight className="size-5" />

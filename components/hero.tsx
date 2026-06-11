@@ -258,21 +258,24 @@ export function Hero() {
 
         {/* Right Column - Box containing interactive tabs & grids */}
         <div className="col-span-1 lg:col-span-7 flex justify-center lg:justify-end w-full min-w-0">
-          <div className="w-full max-w-2xl rounded-2xl border border-border/80 bg-card/60 backdrop-blur-md py-5 px-3 sm:py-6 sm:px-8 shadow-2xl relative overflow-hidden group h-auto min-h-[500px] lg:h-[500px] flex flex-col justify-between transition-all duration-300 min-w-0">
+          <div className="w-full max-w-2xl rounded-2xl border border-border/80 bg-card/60 backdrop-blur-md py-5 px-3 sm:py-6 sm:px-8 shadow-2xl relative overflow-hidden group h-auto lg:h-[500px] flex flex-col justify-between transition-all duration-300 min-w-0">
             {/* Corner Decorative Lights */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-3xl rounded-full opacity-50 group-hover:opacity-80 transition-opacity" />
 
-            <Tabs defaultValue="video" className="w-full flex-1 flex flex-col justify-between min-w-0">
+            <Tabs defaultValue="image" className="w-full flex-1 flex flex-col justify-between min-w-0">
               <div className="relative w-full max-w-full h-12 mb-4 flex items-center justify-center min-w-0 overflow-hidden">
                 <TabsList className="flex !w-full overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] justify-start sm:justify-center sm:grid sm:grid-cols-5 p-1 min-w-0">
-                  <TabsTrigger value="video" className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1.5 py-0.5 sm:py-1 text-[9px] min-[360px]:text-[10px] sm:text-xs font-semibold px-0.5 flex-shrink-0">
-                    <Video className="size-3.5" />
-                    <span>Video</span>
-                  </TabsTrigger>
-                  <TabsTrigger value="image" className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1.5 py-0.5 sm:py-1 text-[9px] min-[360px]:text-[10px] sm:text-xs font-semibold px-0.5 flex-shrink-0">
-                    <ImageIcon className="size-3.5" />
-                    <span>Image</span>
-                  </TabsTrigger>
+
+                    <TabsTrigger value="image" className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1.5 py-0.5 sm:py-1 text-[9px] min-[360px]:text-[10px] sm:text-xs font-semibold px-0.5 flex-shrink-0">
+                        <ImageIcon className="size-3.5" />
+                        <span>Image</span>
+                    </TabsTrigger>
+
+                    <TabsTrigger value="video" className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1.5 py-0.5 sm:py-1 text-[9px] min-[360px]:text-[10px] sm:text-xs font-semibold px-0.5 flex-shrink-0">
+                        <Video className="size-3.5" />
+                        <span>Video</span>
+                    </TabsTrigger>
+
                   <TabsTrigger value="text" className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1.5 py-0.5 sm:py-1 text-[9px] min-[360px]:text-[10px] sm:text-xs font-semibold px-0.5 flex-shrink-0">
                     <FileText className="size-3.5" />
                     <span>Text</span>

@@ -247,12 +247,12 @@ export function FeaturesBlock() {
                 {/* 6-Cards Grid Column */}
                 <div 
                   className={cn(
-                    "w-full flex flex-col justify-between",
+                    "w-full flex flex-col justify-between order-2",
                     isEven ? "lg:order-first" : "lg:order-last"
                   )}
                 >
                   {/* Grid of 6 equal-size square cards */}
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 w-full h-full">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full h-full">
                     {section.items.map((item) => {
                       const Icon = item.icon;
                       return (
@@ -260,7 +260,7 @@ export function FeaturesBlock() {
                           key={item.text} 
                           href={item.linkHref}
                           className={cn(
-                            "aspect-square w-full rounded-2xl border transition-all duration-300 flex flex-col items-center justify-center p-2.5 sm:p-3.5 text-center group/card cursor-pointer",
+                            "w-full rounded-2xl border transition-all duration-300 flex flex-row sm:flex-col items-center justify-start sm:justify-center p-4 sm:p-3.5 text-left sm:text-center group/card cursor-pointer sm:aspect-square",
                             section.theme.cardDefault,
                             section.theme.cardHover,
                             section.theme.cardHoverShadow
@@ -268,14 +268,14 @@ export function FeaturesBlock() {
                         >
                           {/* Card Icon */}
                           <Icon className={cn(
-                            "size-6 sm:size-7 md:size-8 lg:size-7 xl:size-8 transition-all duration-300 mb-2 sm:mb-3 md:mb-4 lg:mb-3 flex-shrink-0",
+                            "size-6 sm:size-7 md:size-8 lg:size-7 xl:size-8 transition-all duration-300 mr-4 sm:mr-0 mb-0 sm:mb-3 md:mb-4 lg:mb-3 flex-shrink-0",
                             section.theme.iconDefault,
                             section.theme.iconHover
                           )} />
                           
                           {/* Card Text */}
                           <span className={cn(
-                            "text-xs sm:text-sm md:text-base lg:text-sm xl:text-base font-bold transition-colors leading-snug max-w-full px-1 text-center",
+                            "text-sm sm:text-sm md:text-base lg:text-sm xl:text-base font-bold transition-colors leading-snug max-w-full sm:px-1 text-left sm:text-center",
                             section.theme.textDefault,
                             section.theme.textHover
                           )}>
@@ -290,7 +290,7 @@ export function FeaturesBlock() {
                 {/* Empty Box Placeholder Column (Even/Odd flipped) */}
                 <div 
                   className={cn(
-                    "w-full flex justify-center items-center",
+                    "w-full flex justify-center items-center order-1",
                     isEven ? "lg:order-last" : "lg:order-first"
                   )}
                 >

@@ -177,33 +177,33 @@ function LibraryCarousel() {
     return (
       <a 
         href="#pricing"
-        className={`w-full h-full rounded-2xl border ${item.bgColor} ${item.borderColor} transition-all duration-300 flex flex-col justify-between overflow-hidden relative group p-6 cursor-pointer block`}
+        className={`w-full h-full rounded-2xl border ${item.bgColor} ${item.borderColor} transition-all duration-300 flex flex-col justify-between overflow-hidden relative group p-6 md:p-6 cursor-pointer block`}
       >
         {/* Top Radial Glow */}
         <div className={`absolute top-0 inset-x-0 h-40 bg-gradient-to-b ${item.glowColor} pointer-events-none rounded-t-2xl`} />
 
         {/* Top Section: Category Tag (Centered) */}
         <div className="flex justify-center w-full z-10">
-          <span className={`text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full border ${item.tagColor}`}>
+          <span className={`text-[12px] md:text-[10px] font-semibold uppercase tracking-wider px-3 md:px-2.5 py-1.5 md:py-1 rounded-full border ${item.tagColor}`}>
             {item.category}
           </span>
         </div>
 
         {/* Middle Section: 3D Product Box Image */}
-        <div className="flex-1 relative min-h-[140px] flex items-center justify-center p-4">
+        <div className="flex-1 relative flex items-center justify-center p-0 md:p-4 min-h-0">
           <img 
             src={item.imagePath} 
             alt={item.title} 
-            className="h-32 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
+            className="w-full h-full md:h-32 md:w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
           />
         </div>
 
         {/* Bottom Section: Pack Details */}
-        <div className="space-y-1 z-10 text-center">
-          <h3 className="text-sm font-bold text-zinc-100 group-hover:text-white transition-colors line-clamp-2">
+        <div className="space-y-1.5 md:space-y-1 z-10 text-center">
+          <h3 className="text-base md:text-sm font-bold text-zinc-100 group-hover:text-white transition-colors line-clamp-2">
             {item.title}
           </h3>
-          <p className="text-[11px] text-zinc-500 font-medium">
+          <p className="text-xs md:text-[11px] text-zinc-500 font-medium">
             {item.count}
           </p>
         </div>
@@ -266,14 +266,14 @@ function LibraryCarousel() {
         </Button>
       </div>
 
-      {/* Slightly wider than Features (max-w-7xl) and center aligned */}
       <div className="max-w-7xl mx-auto px-0 sm:px-6 relative z-10">
         <MotionCarousel
           slides={TEMPLATE_PACKS}
           options={OPTIONS}
           renderSlide={renderSlide}
+          hideDots={true}
           slideClassName="h-auto aspect-[3/4]"
-          containerClassName="[--slide-size:150px] [--slide-spacing:20px] [--viewport-width:calc(2*(var(--slide-size)+var(--slide-spacing)))] sm:[--slide-size:180px] md:[--slide-size:200px] lg:[--slide-size:220px] lg:[--viewport-width:calc(4*(var(--slide-size)+var(--slide-spacing)))]"
+          containerClassName="[--slide-size:75vw] [--slide-spacing:16px] [--viewport-width:100%] sm:[--slide-size:180px] sm:[--viewport-width:calc(2*(var(--slide-size)+var(--slide-spacing)))] md:[--slide-size:200px] lg:[--slide-size:220px] lg:[--viewport-width:calc(4*(var(--slide-size)+var(--slide-spacing)))]"
         />
       </div>
     </section>
