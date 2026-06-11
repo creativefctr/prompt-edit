@@ -37,7 +37,8 @@ export function Pricing() {
             </div>
             
             <Button variant="outline" size="lg" className="w-full mt-8 bg-background hover:bg-muted group">
-              Buy Credit Pack <ArrowRight className="size-4 ml-1.5 transition-transform duration-300 group-hover:translate-x-1" />
+              Buy Credit Pack
+              <ArrowRight className="-mr-2 ml-2 size-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Button>
             
             <div className="w-full h-px bg-border my-8" />
@@ -87,7 +88,8 @@ export function Pricing() {
               </div>
               
               <Button size="lg" className="w-full mt-8 group">
-                Subscribe to Creator Membership <ArrowRight className="size-4 ml-1.5 transition-transform duration-300 group-hover:translate-x-1" />
+                Subscribe to Creator Membership
+                <ArrowRight className="-mr-2 ml-2 size-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
               
               <div className="w-full h-px bg-border my-8" />

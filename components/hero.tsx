@@ -236,7 +236,8 @@ export function Hero() {
 
           <div className="flex flex-wrap justify-center lg:justify-start gap-4 w-full sm:w-auto">
             <Button size="lg" className="w-full sm:w-auto group">
-              Buy Credits <ArrowRight className="size-4 ml-1.5 transition-transform duration-300 group-hover:translate-x-1" />
+              Buy Credits
+              <ArrowRight className="-mr-2 ml-2 size-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Button>
             <Button variant="outline" size="lg" className="w-full sm:w-auto">
               See What’s Included
