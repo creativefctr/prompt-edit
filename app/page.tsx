@@ -6,6 +6,7 @@ import { Pricing } from "@/components/pricing";
 import { Faq } from "@/components/faq";
 import { TestimonialsSection } from "@/components/testimonials-section";
 import { Navbar } from "@/components/navbar";
+import { AiPlugin } from "@/components/ai-plugin";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <Hero />
         <FeaturesBlock />
         <LibraryCarousel />
+        <AiPlugin />
         <TestimonialsSection />
         <Pricing />
         <Faq />

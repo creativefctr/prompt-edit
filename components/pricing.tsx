@@ -88,7 +88,7 @@ export function Pricing() {
               </div>
               
               <Button size="lg" className="w-full mt-8 group">
-                Subscribe to Creator Membership
+                Subscribe
                 <ArrowRight className="-mr-2 ml-2 size-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
               
